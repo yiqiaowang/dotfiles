@@ -18,7 +18,7 @@ endif
 " Automatically reload configuration on save
 augroup AutoReloadConfig
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh
 augroup END
 
 " ------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ augroup END
 " ------------------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/vim-plug')
 
-Plug 'joshdick/onedark.vim'             " theme
+Plug 'mhartington/oceanic-next'                " theme
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -46,11 +46,19 @@ Plug 'tpope/vim-unimpaired'		" bracket mappings
 Plug 'tpope/vim-fugitive'		" git wrapper
 Plug 'mhinz/vim-signify'                " visualize vcs changes
 Plug 'justinmk/vim-dirvish'             " netrw replacement
+Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'w0rp/ale'				" linter
 Plug 'sheerun/vim-polyglot'             " language pack
 Plug 'tpope/vim-repeat'                 " repeat plugin maps
 Plug 'vim-airline/vim-airline'          " statusline
 Plug 'mhinz/vim-startify'               " nice startup page
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }                                 " language client
+Plug 'Shougo/deoplete.nvim', {
+    \ 'do': ':UpdateRemotePlugins'
+    \ }                                 " completions
 
 call plug#end()
 
@@ -58,15 +66,14 @@ call plug#end()
 " Configuration
 " ------------------------------------------------------------------------------
 
-" Setup pretty colors
-if (has("termguicolors"))
-    set termguicolors
-endif
+" syntax highlighting
+syntax on
 
 " Theme
-syntax on
-colorscheme onedark
-let g:onedark_terminal_italics=1
+set termguicolors
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 " Allow multiple unsaved buffers
 set hidden
@@ -95,17 +102,36 @@ nnoremap <C-Left>  10<C-w><
 " Make Y behavior consistent
 nnoremap Y y$
 
+" Trim whitespace
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
+    \ :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 " Correctly setup tab and space behavior
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" indentline
+let g:indentLine_char = ''
+let g:indentLine_first_char = ''
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+
+" language client
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls']
+    \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 " ale
 let g:ale_sign_column_always = 1
 
 " airline
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme = 'oceanicnext'
 let g:airline_powerline_fonts = 1
 
 " Fix konsole font rendering issue
