@@ -91,7 +91,6 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>d :bp\|bd #<CR>
-nnoremap <Leader>- :Vexplore<CR>
 
 " Resizing splits
 nnoremap <C-Right> 10<C-w>>
