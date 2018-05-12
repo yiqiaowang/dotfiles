@@ -10,6 +10,7 @@ source $HOME/.cargo/env
 # Aliases
 alias ls='ls --color=auto'
 alias ll='ls -lAh'
+alias vim='nvim'
 
 # zsh options
 setopt PROMPT_SUBST
@@ -34,6 +35,7 @@ PS1='%(?..[${PR_LIGHT_RED}%?$PR_NO_COLOR])%(!.${PR_LIGHT_RED}#.${PR_LIGHT_GREEN}
 RPS1='%(!.${PR_RED}%3c.${PR_BLUE}%3c)$PR_NO_COLOR'
 
 # Completion Settings & Options
+fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 setopt complete_in_word
 setopt auto_menu
