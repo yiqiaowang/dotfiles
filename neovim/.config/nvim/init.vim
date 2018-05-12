@@ -26,7 +26,10 @@ augroup END
 " ------------------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/vim-plug')
 
-Plug 'mhartington/oceanic-next'                " theme
+Plug 'Yggdroot/indentline'              " highlight indent levels
+Plug 'mhartington/oceanic-next'         " theme
+Plug 'mhinz/vim-startify'               " nice startup page
+Plug 'vim-airline/vim-airline'          " statusline
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -38,20 +41,17 @@ Plug 'junegunn/fzf', {
 Plug 'junegunn/fzf.vim'                 " fzf integration
 Plug 'junegunn/vim-easy-align'          " align stuff
 Plug 'SirVer/ultisnips'                 " snippet engine
-    \ | Plug 'honza/vim-snippets'       " snippet sources
+Plug 'honza/vim-snippets'               " snippet sources
 Plug 'tpope/vim-commentary'		" comment helper
-Plug 'tpope/vim-surround'		" quoting/paren etc. helper
 Plug 'tpope/vim-eunuch'		        " unix commands helper
+Plug 'tpope/vim-repeat'                 " repeat plugin maps
+Plug 'tpope/vim-surround'		" quoting/paren etc. helper
 Plug 'tpope/vim-unimpaired'		" bracket mappings
-Plug 'tpope/vim-fugitive'		" git wrapper
+Plug 'lambdalisue/gina.vim'             " async git
 Plug 'mhinz/vim-signify'                " visualize vcs changes
 Plug 'justinmk/vim-dirvish'             " netrw replacement
-Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'w0rp/ale'				" linter
 Plug 'sheerun/vim-polyglot'             " language pack
-Plug 'tpope/vim-repeat'                 " repeat plugin maps
-Plug 'vim-airline/vim-airline'          " statusline
-Plug 'mhinz/vim-startify'               " nice startup page
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -64,96 +64,100 @@ Plug 'christoomey/vim-tmux-navigator'   " tmux
 call plug#end()
 
 " ------------------------------------------------------------------------------
+" Key bindings
+" ------------------------------------------------------------------------------
+let mapleader="\<Space>"
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :History<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :GFiles<cr>
+nnoremap <leader>d :bp\|bd #<cr>
+nnoremap <leader>- :new<cr>
+nnoremap <leader>\ :vnew<cr>
+
+nnoremap <bs> <c-^>
+
+nnoremap <c-right> 10<c-w>>
+nnoremap <c-up>    5<c-w>+
+nnoremap <c-down>  5<c-w>-
+nnoremap <c-left>  10<c-w><
+
+nnoremap Y y$
+
+" Trim whitespace
+nnoremap <silent> <f5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
+    \ :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
+" ------------------------------------------------------------------------------
 " Configuration
 " ------------------------------------------------------------------------------
 
-" syntax highlighting
-syntax on
+syntax on                                " Syntax Highlighting
 
-" Theme
-set termguicolors
+set termguicolors                        " Theme
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
 
-" Allow multiple unsaved buffers
-set hidden
+set hidden                               " Allow multiple unsaved buffers
 
-" Split below and to the right
-set splitbelow
-set splitright
+set splitbelow                           " Split below
+set splitright                           " Split right
 
-" Key bindings
-nnoremap <BS> <C-^>
-
-" Leader bindings
-let mapleader="\<Space>"
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>d :bp\|bd #<CR>
-
-" Resizing splits
-nnoremap <C-Right> 10<C-w>>
-nnoremap <C-Up>    5<C-w>+
-nnoremap <C-Down>  5<C-w>-
-nnoremap <C-Left>  10<C-w><
-
-" Make Y behavior consistent
-nnoremap Y y$
-
-" Trim whitespace
-nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
-    \ :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-
-" Correctly setup tab and space behavior
-set tabstop=8
+set tabstop=8                            " Correctly setup tab and space behavior
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" indentline
-let g:indentLine_char = ''
+set formatoptions+=j                     " Saner line joins
+
+let g:indentLine_char = ''              " Indentline
 let g:indentLine_first_char = ''
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 
-" language client
+let g:deoplete#enable_at_startup = 1     " deoplete
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#auto_complete_start_length = 1
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_full_fuzzy'])
+
+let g:UltiSnipsExpandTrigger = "<c-j>"   " ultisnips
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <c-x><c-k> <c-x><c-k>
+
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls']
-    \ }
+    \ }                                  " language client
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <f2> :call LanguageClient#textDocument_rename()<CR>
 
-" vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_no_mappings = 1     " vim-tmux-navigator
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-bs> :TmuxNavigatePrevious<cr>
 
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <Leader><BS> :TmuxNavigatePrevious<cr>
+let g:ale_sign_column_always = 1         " ale
 
-" ale
-let g:ale_sign_column_always = 1
-
-" airline
-let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#enabled = 1 " airline
 let g:airline_theme = 'oceanicnext'
 let g:airline_powerline_fonts = 1
-
-" Fix konsole font rendering issue
+" Fix Konsole font rendering issue
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.maxlinenr = ' '
+" Use gina.vim for branch info
+let g:airline_section_b = '%-0.10{gina#component#repo#branch()}'
 
-" signify
-let g:signify_vcs_list = ['git']
+let g:signify_vcs_list = ['git']        " signify
 
-" dirvish
-let g:loaded_netrwPlugin = 1
+let g:loaded_netrwPlugin = 1            " dirvish
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
