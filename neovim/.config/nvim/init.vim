@@ -52,14 +52,13 @@ Plug 'mhinz/vim-signify'                " visualize vcs changes
 Plug 'justinmk/vim-dirvish'             " netrw replacement
 Plug 'w0rp/ale'				" linter
 Plug 'sheerun/vim-polyglot'             " language pack
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }                                 " language client
 Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
 Plug 'christoomey/vim-tmux-navigator'   " tmux
+
+Plug 'slashmili/alchemist.vim'          " elixir support
+Plug 'mhinz/vim-mix-format'
 
 call plug#end()
 
@@ -93,6 +92,7 @@ nnoremap <silent> <f5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
 " ------------------------------------------------------------------------------
 
 syntax on                                " Syntax Highlighting
+set number                               " Line numbers
 
 set termguicolors                        " Theme
 let g:oceanic_next_terminal_bold = 1
@@ -127,13 +127,6 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 inoremap <c-x><c-k> <c-x><c-k>
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls']
-    \ }                                  " language client
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <f2> :call LanguageClient#textDocument_rename()<CR>
 
 let g:tmux_navigator_no_mappings = 1     " vim-tmux-navigator
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
