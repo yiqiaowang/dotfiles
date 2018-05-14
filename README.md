@@ -1,2 +1,6 @@
 # dotfiles
-Dotfiles __Currently rebuilding__
+__Currently rebuilding__
+
+
+## Font
+IBM Plex Book
