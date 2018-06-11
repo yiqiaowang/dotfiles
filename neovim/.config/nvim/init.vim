@@ -18,7 +18,7 @@ endif
 " Automatically reload configuration on save
 augroup AutoReloadConfig
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
 " ------------------------------------------------------------------------------
@@ -29,7 +29,8 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'mhartington/oceanic-next'         " theme
 Plug 'mhinz/vim-startify'               " nice startup page
-Plug 'vim-airline/vim-airline'          " statusline
+" Plug 'vim-airline/vim-airline'          " statusline
+Plug 'yiqiaowang/eleline.vim'           " My own statusline ;)
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -62,18 +63,15 @@ Plug 'mhinz/vim-mix-format'
 
 call plug#end()
 
+" ------------------------------------------------------------------------------ Key bindings
 " ------------------------------------------------------------------------------
-" Key bindings
-" ------------------------------------------------------------------------------
-let mapleader="\<Space>"
+let mapleader="\<space>"
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :GFiles<cr>
 nnoremap <leader>d :bp\|bd #<cr>
-nnoremap <leader>- :new<cr>
-nnoremap <leader>\ :vnew<cr>
-
+nnoremap <leader>w :wa<cr>
 nnoremap <bs> <c-^>
 
 nnoremap <c-right> 10<c-w>>
@@ -128,25 +126,9 @@ imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 inoremap <c-x><c-k> <c-x><c-k>
 
-let g:tmux_navigator_no_mappings = 1     " vim-tmux-navigator
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-bs> :TmuxNavigatePrevious<cr>
+let g:ale_sign_column_always = 1        " ale
 
-let g:ale_sign_column_always = 1         " ale
-
-let g:airline#extensions#ale#enabled = 1 " airline
-let g:airline_theme = 'oceanicnext'
-let g:airline_powerline_fonts = 1
-" Fix Konsole font rendering issue
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.maxlinenr = ' '
-" Use gina.vim for branch info
-let g:airline_section_b = '%-0.10{gina#component#repo#branch()}'
+let g:eleline_powerline_fonts = 1       " eleline
 
 let g:signify_vcs_list = ['git']        " signify
 

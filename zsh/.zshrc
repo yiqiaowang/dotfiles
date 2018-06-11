@@ -7,6 +7,9 @@ path=(~/.local/bin/ $path)
 # Add rust to path
 source $HOME/.cargo/env
 
+# Source plugins
+source $HOME/.zsh/zsh-nvm/zsh-nvm.plugin.zsh
+
 # Aliases
 alias ls='ls --color=auto'
 alias ll='ls -lAh'
