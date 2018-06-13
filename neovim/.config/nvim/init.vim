@@ -27,9 +27,8 @@ augroup END
 call plug#begin('~/.local/share/nvim/vim-plug')
 
 Plug 'Yggdroot/indentline'              " highlight indent levels
-Plug 'mhartington/oceanic-next'         " theme
+Plug 'fxn/vim-monochrome'               " colorscheme
 Plug 'mhinz/vim-startify'               " nice startup page
-" Plug 'vim-airline/vim-airline'          " statusline
 Plug 'yiqiaowang/eleline.vim'           " My own statusline ;)
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
@@ -93,9 +92,7 @@ syntax on                                " Syntax Highlighting
 set number                               " Line numbers
 
 set termguicolors                        " Theme
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+colorscheme monochrome
 
 set hidden                               " Allow multiple unsaved buffers
 
