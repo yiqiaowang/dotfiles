@@ -28,8 +28,8 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'mhinz/vim-startify'               " nice startup page
-Plug 'yiqiaowang/eleline.vim'           " My own statusline ;)
-Plug 'mhartington/oceanic-next'          " theme
+Plug 'yiqiaowang/statusline'            " My own statusline ;)
+Plug 'trevordmiller/nova-vim'           " hows this one??
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -93,10 +93,7 @@ set number                               " Line numbers
 
 set termguicolors                        " Theme
 syntax on
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
-
+colorscheme nova
 
 set hidden                               " Allow multiple unsaved buffers
 
