@@ -57,16 +57,13 @@ Plug 'Shougo/deoplete.nvim', {
     \ }                                 " completions
 Plug 'christoomey/vim-tmux-navigator'   " tmux
 
-" elixir support
-Plug 'slashmili/alchemist.vim'          
+Plug 'slashmili/alchemist.vim'          " elixir support
 Plug 'mhinz/vim-mix-format'
-
-" cpp support
-
 
 call plug#end()
 
-" ------------------------------------------------------------------------------ Key bindings
+" ------------------------------------------------------------------------------ 
+"  Key bindings
 " ------------------------------------------------------------------------------
 let mapleader="\<space>"
 nnoremap <leader>b :Buffers<cr>
@@ -121,12 +118,12 @@ let g:deoplete#enable_ignore_case = 1
 let g:deoplete#auto_complete_start_length = 1
 call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_full_fuzzy'])
+imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 let g:UltiSnipsExpandTrigger = "<c-j>"   " ultisnips
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-inoremap <c-x><c-k> <c-x><c-k>
+" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 let g:ale_sign_column_always = 1        " ale
 
