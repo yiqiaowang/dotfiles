@@ -123,7 +123,6 @@ imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 let g:UltiSnipsExpandTrigger = "<c-j>"   " ultisnips
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 let g:ale_sign_column_always = 1        " ale
 
