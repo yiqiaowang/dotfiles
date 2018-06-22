@@ -29,7 +29,7 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'mhinz/vim-startify'               " nice startup page
 Plug 'yiqiaowang/statusline'            " My own statusline ;)
-Plug 'trevordmiller/nova-vim'           " hows this one??
+Plug 'ayu-theme/ayu-vim'
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -57,8 +57,12 @@ Plug 'Shougo/deoplete.nvim', {
     \ }                                 " completions
 Plug 'christoomey/vim-tmux-navigator'   " tmux
 
-Plug 'slashmili/alchemist.vim'          " elixir support
+" elixir support
+Plug 'slashmili/alchemist.vim'          
 Plug 'mhinz/vim-mix-format'
+
+" cpp support
+
 
 call plug#end()
 
@@ -92,8 +96,8 @@ syntax on                                " Syntax Highlighting
 set number                               " Line numbers
 
 set termguicolors                        " Theme
-syntax on
-colorscheme nova
+let ayucolor='mirage'
+colorscheme ayu
 
 set hidden                               " Allow multiple unsaved buffers
 
