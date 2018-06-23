@@ -56,6 +56,7 @@ Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
 Plug 'christoomey/vim-tmux-navigator'   " tmux
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'slashmili/alchemist.vim'          " elixir support
 Plug 'mhinz/vim-mix-format'
@@ -134,3 +135,5 @@ let g:loaded_netrwPlugin = 1            " dirvish
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+
+let g:gutentags_modules = ['ctags', 'gtags_cscope']  " gutentags
