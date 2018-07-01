@@ -4,8 +4,8 @@
 typeset -U path
 path=(~/.local/bin/ $path)
 
-# Add rust to path
-source $HOME/.cargo/env
+# Export environment variables
+export GTAGSLABEL=pygments
 
 # Source plugins
 source $HOME/.zsh/zsh-nvm/zsh-nvm.plugin.zsh
@@ -47,4 +47,5 @@ setopt autocd
 # Completion configuration
 zstyle ':completion:*' menu select
 
+# Setup fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
