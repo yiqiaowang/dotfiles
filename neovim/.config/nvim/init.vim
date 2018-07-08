@@ -52,7 +52,7 @@ Plug 'lambdalisue/gina.vim'             " async git
 Plug 'mhinz/vim-signify'                " visualize vcs changes
 Plug 'w0rp/ale'				" linter
 Plug 'sheerun/vim-polyglot'             " language pack
-Plug 'ipod825/vim-netranger'
+Plug 'justinmk/vim-dirvish'             " netrw replacement
 Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
@@ -151,6 +151,12 @@ let g:eleline_powerline_fonts = 1
 
 " signify
 let g:signify_vcs_list = ['git']
+
+" dirvish
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " gutentags
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
