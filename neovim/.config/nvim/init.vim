@@ -29,7 +29,7 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'mhinz/vim-startify'               " nice startup page
 Plug 'yiqiaowang/statusline'            " My own statusline ;)
-Plug 'robertmeta/nofrils'               " Theme
+Plug 'lifepillar/vim-gruvbox8'          " Theme
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
@@ -50,9 +50,9 @@ Plug 'tpope/vim-surround'		" quoting/paren etc. helper
 Plug 'tpope/vim-unimpaired'		" bracket mappings
 Plug 'lambdalisue/gina.vim'             " async git
 Plug 'mhinz/vim-signify'                " visualize vcs changes
-Plug 'justinmk/vim-dirvish'             " netrw replacement
 Plug 'w0rp/ale'				" linter
 Plug 'sheerun/vim-polyglot'             " language pack
+Plug 'ipod825/vim-netranger'
 Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
@@ -103,9 +103,7 @@ set number
 
 " Theme
 set termguicolors
-let g:nofrils_strbackgrounds=1
-let g:nofrils_heavycomments=1
-colorscheme nofrils-acme
+colorscheme gruvbox8_hard
 
 " Allow multiple unsaved buffers
 set hidden
@@ -122,6 +120,9 @@ set expandtab
 
 " Saner line joins
 set formatoptions+=j
+
+" Use system clipboard
+set clipboard=unnamedplus
 
 " Indentline
 let g:indentLine_char = ''
@@ -150,12 +151,6 @@ let g:eleline_powerline_fonts = 1
 
 " signify
 let g:signify_vcs_list = ['git']
-
-" dirvish
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " gutentags
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
