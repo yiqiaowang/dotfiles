@@ -28,9 +28,8 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'mhinz/vim-startify'               " nice startup page
-Plug 'yiqiaowang/statusline'            " My own statusline ;)
-Plug 'lifepillar/vim-gruvbox8'          " Theme
-Plug 'owickstrom/vim-colors-paramount'
+Plug 'yiqiaowang/statusline'            " statusline
+Plug 'yiqiaowang/inkpot'                " theme
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -103,7 +102,7 @@ set number
 
 " Theme
 set termguicolors
-colorscheme gruvbox8_hard
+colorscheme inkpot
 
 " Allow multiple unsaved buffers
 set hidden
@@ -128,7 +127,6 @@ set clipboard=unnamedplus
 let g:indentLine_char = ''
 let g:indentLine_first_char = ''
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
