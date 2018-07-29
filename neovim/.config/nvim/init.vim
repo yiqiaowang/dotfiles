@@ -58,9 +58,7 @@ Plug 'Shougo/deoplete.nvim', {
 Plug 'christoomey/vim-tmux-navigator'   " tmux
 Plug 'ludovicchabant/vim-gutentags'     " tags
 Plug 'skywind3000/gutentags_plus'       " improved tags
-
-Plug 'slashmili/alchemist.vim'          " elixir support
-Plug 'mhinz/vim-mix-format'
+Plug 'RRethy/vim-illuminate'            " highlights word under cursor
 
 call plug#end()
 
