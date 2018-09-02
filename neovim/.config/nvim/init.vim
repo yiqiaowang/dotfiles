@@ -56,8 +56,6 @@ Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
 Plug 'christoomey/vim-tmux-navigator'   " tmux
-Plug 'ludovicchabant/vim-gutentags'     " tags
-Plug 'skywind3000/gutentags_plus'       " improved tags
 Plug 'RRethy/vim-illuminate'            " highlights word under cursor
 
 call plug#end()
