@@ -1,2 +1,5 @@
 # Plugins
 source ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh
+
+# Fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

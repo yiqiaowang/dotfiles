@@ -5,8 +5,7 @@
 "
 
 " ------------------------------------------------------------------------------
-" Fun stuff
-" ------------------------------------------------------------------------------
+" Fun stuff -----------------------------------------------------------------------------
 
 " Automatically install vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -26,10 +25,15 @@ augroup END
 " ------------------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/vim-plug')
 
-Plug 'Yggdroot/indentline'              " highlight indent levels
+" cosmetics
 Plug 'mhinz/vim-startify'               " nice startup page
-Plug 'yiqiaowang/statusline'            " statusline
+Plug 'RRethy/vim-illuminate'            " highlights word under cursor
+Plug 'Yggdroot/indentline'              " highlight indent levels
 Plug 'yiqiaowang/inkpot'                " theme
+Plug 'yiqiaowang/statusline'            " statusline
+
+" utilites
+Plug 'christoomey/vim-tmux-navigator'   " tmux
 Plug 'junegunn/fzf', {
     \  'dir': '~/.fzf',
     \  'do': './install
@@ -40,24 +44,25 @@ Plug 'junegunn/fzf', {
     \  }                                " fuzzyfinder
 Plug 'junegunn/fzf.vim'                 " fzf integration
 Plug 'junegunn/vim-easy-align'          " align stuff
-Plug 'SirVer/ultisnips'                 " snippet engine
-Plug 'honza/vim-snippets'               " snippet sources
+Plug 'justinmk/vim-dirvish'             " netrw replacement
 Plug 'tpope/vim-commentary'		" comment helper
 Plug 'tpope/vim-eunuch'		        " unix commands helper
 Plug 'tpope/vim-repeat'                 " repeat plugin maps
 Plug 'tpope/vim-surround'		" quoting/paren etc. helper
 Plug 'tpope/vim-unimpaired'		" bracket mappings
-Plug 'lambdalisue/gina.vim'             " async git
-Plug 'mhinz/vim-signify'                " visualize vcs changes
-Plug 'w0rp/ale'				" linter
+
+" language support
+Plug 'honza/vim-snippets'               " snippet sources
 Plug 'sheerun/vim-polyglot'             " language pack
-Plug 'justinmk/vim-dirvish'             " netrw replacement
 Plug 'Shougo/deoplete.nvim', {
     \ 'do': ':UpdateRemotePlugins'
     \ }                                 " completions
-Plug 'christoomey/vim-tmux-navigator'   " tmux
-Plug 'RRethy/vim-illuminate'            " highlights word under cursor
+Plug 'SirVer/ultisnips'                 " snippet engine
+Plug 'w0rp/ale'				" linter
 
+" source control
+Plug 'lambdalisue/gina.vim'             " async git
+Plug 'mhinz/vim-signify'                " visualize vcs changes
 call plug#end()
 
 " ------------------------------------------------------------------------------
@@ -67,10 +72,13 @@ call plug#end()
 " Leader mappings
 let mapleader="\<space>"
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>h :History<cr>
+nnoremap <leader>d :bp\|bd #<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :GFiles<cr>
-nnoremap <leader>d :bp\|bd #<cr>
+nnoremap <leader>h :History<cr>
+nnoremap <leader>r :Rg<cr>
+nnoremap <leader>s :Snippets<cr>
+nnoremap <leader>v :Gina status<cr>
 nnoremap <leader>w :wa<cr>
 nnoremap <bs> <c-^>
 
@@ -120,15 +128,13 @@ set formatoptions+=j
 set clipboard=unnamedplus
 
 " Indentline
-let g:indentLine_char = ''
-let g:indentLine_first_char = ''
-let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_char = '▏'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#auto_complete_start_length = 1
-call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_full_fuzzy'])
 imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
@@ -141,7 +147,7 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:ale_sign_column_always = 1
 
 " eleline
-let g:eleline_powerline_fonts = 1
+let g:eleline_powerline_fonts = 1 
 
 " signify
 let g:signify_vcs_list = ['git']
@@ -152,8 +158,33 @@ command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
-" gutentags
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-let g:gutentags_project_root = ['.root']
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-let g:gutentags_auto_add_gtags_cscope = 0
+" fzf.vim
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" ripgrep with preview
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" GFiles command with preview window
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
