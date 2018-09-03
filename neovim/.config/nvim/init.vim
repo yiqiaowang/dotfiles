@@ -78,7 +78,8 @@ nnoremap <leader>g :GFiles<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :Snippets<cr>
-nnoremap <leader>v :Gina status<cr>
+nnoremap <leader>vs :Gina status<cr>
+nnoremap <leader>vc :Gina commit<cr>
 nnoremap <leader>w :wa<cr>
 nnoremap <bs> <c-^>
 
