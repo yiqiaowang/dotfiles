@@ -1,5 +1,11 @@
 # Plugins
-source ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh
+[ -f ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 # Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# elixir-ls
+[ -f ~/build/elixir-ls-server/language_server.sh ] && PATH=$PATH:~/build/elixir-ls-server
+
+# Export path
+export PATH
