@@ -106,8 +106,15 @@ nnoremap <silent> <F9> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
 
 " Syntax Highlighting
 syntax on
+
 " Line numbers
 set number
+
+" Try to show paragraph's last line
+set display+=lastline
+
+" Keep lines above and below cursor
+set scrolloff=1
 
 " Theme
 set termguicolors
@@ -126,11 +133,17 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" round to nearest multiple of shiftwidth
+set shiftround
+
 " Saner line joins
 set formatoptions+=j
 
 " Use system clipboard
 set clipboard=unnamedplus
+
+" Don't update screen during macro and script execution
+set lazyredraw
 
 " Indentline
 let g:indentLine_char = '▏'
