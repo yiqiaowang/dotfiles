@@ -54,23 +54,25 @@ Plug 'tpope/vim-unimpaired'                 " bracket mappings
 " language support
 Plug 'honza/vim-snippets'                   " snippet sources
 Plug 'sheerun/vim-polyglot'                 " language pack
-Plug 'Shougo/deoplete.nvim', {
-            \ 'do': ':UpdateRemotePlugins'
-            \ }                             " completions
 Plug 'SirVer/ultisnips'                     " snippet engine
 Plug 'w0rp/ale'                             " linter
 Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh',
             \ }                             " language server
+Plug 'ncm2/ncm2'                            " autocomplete
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
 
 " source control
 Plug 'lambdalisue/gina.vim'                 " async git
 Plug 'mhinz/vim-signify'                    " visualize vcs changes
 call plug#end()
 
-" ------------------------------------------------------------------------------
-"  Key bindings
+" ------------------------------------------------------------------------------ Key bindings
 " ------------------------------------------------------------------------------
 
 " Leader mappings
@@ -148,18 +150,23 @@ set lazyredraw
 " Indentline
 let g:indentLine_char = '▏'
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#auto_complete_start_length = 1
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_full_fuzzy'])
-imap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-imap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+" ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+set pumheight=10
+
+inoremap <c-c> <ESC>
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> (pumvisible() ? "\<C-n>" : "\<Tab>")
+inoremap <expr> <S-Tab> (pumvisible() ? "\<C-p>" : "\<S-Tab>")
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 " ultisnips
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+imap <c-u> <Plug>(ultisnips_expand)
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " ale
 let g:ale_sign_column_always = 1
