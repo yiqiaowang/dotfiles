@@ -147,6 +147,11 @@ set clipboard=unnamedplus
 " Don't update screen during macro and script execution
 set lazyredraw
 
+" Searching stuff
+set ignorecase
+set smartcase
+set incsearch
+
 " Indentline
 let g:indentLine_char = '▏'
 
