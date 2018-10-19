@@ -84,9 +84,8 @@ nnoremap <leader>g :GFiles<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :Snippets<cr>
-nnoremap <leader>vs :Gina status<cr>
-nnoremap <leader>vc :Gina commit<cr>
 nnoremap <leader>w :wa<cr>
+nnoremap <leader>c :noh<cr>
 nnoremap <bs> <c-^>
 
 " Split resize
