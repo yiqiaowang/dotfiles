@@ -85,7 +85,7 @@ nnoremap <leader>h :History<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :Snippets<cr>
 nnoremap <leader>w :wa<cr>
-nnoremap <leader>c :noh<cr>
+nnoremap <silent> <leader>c :noh<cr>:SignifyRefresh<cr>
 nnoremap <bs> <c-^>
 
 " Split resize
