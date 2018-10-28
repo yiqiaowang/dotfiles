@@ -5,7 +5,7 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # elixir-ls
-[ -f ~/build/elixir-ls-server/language_server.sh ] && PATH=$PATH:~/build/elixir-ls-server
+[ -f ~/build/elixir-ls_release/language_server.sh ] && PATH=$PATH:~/build/elixir-ls_release
 
 # Export path
 export PATH

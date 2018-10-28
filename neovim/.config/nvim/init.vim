@@ -84,7 +84,7 @@ nnoremap <leader>g :GFiles<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :Snippets<cr>
-nnoremap <leader>w :wa<cr>:SignifyRefresh<cr>
+nnoremap <silent> <leader>w :wa<cr>:SignifyRefresh<cr>
 nnoremap <silent> <leader>c :noh<cr>
 nnoremap <bs> <c-^>
 
