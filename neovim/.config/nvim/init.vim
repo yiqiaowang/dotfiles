@@ -55,7 +55,6 @@ Plug 'tpope/vim-unimpaired'                 " bracket mappings
 Plug 'honza/vim-snippets'                   " snippet sources
 Plug 'sheerun/vim-polyglot'                 " language pack
 Plug 'SirVer/ultisnips'                     " snippet engine
-Plug 'w0rp/ale'                             " linter
 Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh',
@@ -172,9 +171,6 @@ let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-" ale
-let g:ale_sign_column_always = 1
-
 " eleline
 let g:eleline_powerline_fonts = 1 
 
@@ -193,6 +189,33 @@ let g:LanguageClient_serverCommands = {
             \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+
+let g:LanguageClient_diagnosticsDisplay = {
+            \ 1: {
+            \  "name": "Error",
+            \ "texthl": "ALEError",
+            \ "signText": "!!",
+            \ "signTexthl": "ALEErrorSign",
+            \ },
+            \ 2: {
+            \ "name": "Warning",
+            \ "texthl": "ALEWarning",
+            \ "signText": "**",
+            \ "signTexthl": "ALEWarningSign",
+            \ },
+            \ 3: {
+            \ "name": "Information",
+            \ "texthl": "ALEInfo",
+            \ "signText": "--",
+            \ "signTexthl": "ALEInfoSign",
+            \ },
+            \ 4: {
+            \ "name": "Hint",
+            \ "texthl": "ALEInfo",
+            \ "signText": ">>",
+            \ "signTexthl": "ALEInfoSign",
+            \ }}
 
 " fzf.vim
 let g:fzf_colors = {
