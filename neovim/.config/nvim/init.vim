@@ -113,6 +113,9 @@ set number
 " Try to show paragraph's last line
 set display+=lastline
 
+" Always show sign column
+set signcolumn=yes
+
 " Keep lines above and below cursor
 set scrolloff=1
 
