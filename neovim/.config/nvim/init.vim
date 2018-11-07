@@ -86,6 +86,7 @@ nnoremap <leader>s :Snippets<cr>
 nnoremap <silent> <leader>w :wa<cr>:SignifyRefresh<cr>
 nnoremap <silent> <leader>c :noh<cr>
 nnoremap <bs> <c-^>
+nnoremap <leader>= mfggVG=`fzz
 
 " Split resize
 nnoremap <c-right> 10<c-w>>
