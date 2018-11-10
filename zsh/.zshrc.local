@@ -9,3 +9,39 @@
 
 # Export path
 export PATH
+
+
+
+## STUFF FROM GRML ##
+
+# Virtualenv support
+function virtual_env_prompt () {
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+grml_theme_add_token  virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+zstyle ':prompt:grml:left:setup' items rc virtual-env change-root user at host path vcs percent
+
+
+# use the vi navigation keys (hjkl) besides cursor keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char        # left
+bindkey -M menuselect 'k' vi-up-line-or-history   # up
+bindkey -M menuselect 'l' vi-forward-char         # right
+bindkey -M menuselect 'j' vi-down-line-or-history # bottom
+
+## define word separators (for stuff like backward-word, forward-word, backward-kill-word,..)
+WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' # the default
+WORDCHARS=.
+WORDCHARS='*?_[]~=&;!#$%^(){}'
+WORDCHARS='${WORDCHARS:s@/@}'
+
+## try to avoid the 'zsh: no matches found...'
+setopt nonomatch
+
+## warning if file exists ('cat /dev/null > ~/.zshrc')
+setopt NO_clobber
+
+## don't warn me about bg processes when exiting
+setopt nocheckjobs
+
+## alert me if something failed
+setopt printexitvalue
