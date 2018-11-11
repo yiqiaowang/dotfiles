@@ -1,0 +1,9 @@
+[user]
+	email = yiqiao.wang96@gmail.com
+	name = Yiqiao Wang
+	signingkey = yiqiao.wang96@gmail.com
+[commit]
+	gpgSign = true
+	verbose = true
+[core]
+	editor = nvim
