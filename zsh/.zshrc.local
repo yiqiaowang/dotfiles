@@ -8,10 +8,9 @@
 [ -f ~/build/elixir-ls_release/language_server.sh ] && PATH=$PATH:~/build/elixir-ls_release
 
 PATH=$PATH:~/.local/bin
+
 # Export path
 export PATH
-
-
 
 ## STUFF FROM GRML ##
 
