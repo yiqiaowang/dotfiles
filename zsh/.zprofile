@@ -10,5 +10,5 @@
 # Export path
 export PATH
 
-GPG_TTY=$(tty)
-export GPG_TTY
+# Give gpg-agent the correct startup tty
+echo UPDATESTARTUPTTY | gpg-connect-agent
