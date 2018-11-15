@@ -7,6 +7,9 @@
 # elixir-ls
 [ -f ~/build/elixir-ls_release/language_server.sh ] && PATH=$PATH:~/build/elixir-ls_release
 
+# local bin
+[ -d ~/.local/bin ] && PATH=$PATH:~/.local/bin
+
 # Export path
 export PATH
 
