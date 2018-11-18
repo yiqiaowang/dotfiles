@@ -14,4 +14,4 @@
 export PATH
 
 # Give gpg-agent the correct startup tty
-echo UPDATESTARTUPTTY | gpg-connect-agent
+echo UPDATESTARTUPTTY | gpg-connect-agent &> /dev/null
