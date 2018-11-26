@@ -50,6 +50,7 @@ Plug 'tpope/vim-eunuch'                     " unix commands helper
 Plug 'tpope/vim-repeat'                     " repeat plugin maps
 Plug 'tpope/vim-surround'                   " quoting/paren etc. helper
 Plug 'tpope/vim-unimpaired'                 " bracket mappings
+Plug 'simeji/winresizer'                    " resize windows
 
 " language support
 Plug 'honza/vim-snippets'                   " snippet sources
@@ -87,12 +88,6 @@ nnoremap <silent> <leader>w :wa<cr>:SignifyRefresh<cr>
 nnoremap <silent> <leader>c :noh<cr>
 nnoremap <bs> <c-^>
 nnoremap <leader>= mfggVG=`fzz
-
-" Split resize
-nnoremap <c-right> 10<c-w>>
-nnoremap <c-up>    5<c-w>+
-nnoremap <c-down>  5<c-w>-
-nnoremap <c-left>  10<c-w><
 
 " Make Y more consistent
 nnoremap Y y$
