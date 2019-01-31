@@ -2,6 +2,7 @@
 
 ## Font
 IBM Plex Text
+Iosevka Term
 
 ## gpg-agent
 ```
