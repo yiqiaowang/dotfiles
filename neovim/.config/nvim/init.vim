@@ -56,14 +56,10 @@ Plug 'simeji/winresizer'                    " resize windows
 Plug 'honza/vim-snippets'                   " snippet sources
 Plug 'sheerun/vim-polyglot'                 " language pack
 Plug 'SirVer/ultisnips'                     " snippet engine
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }                             " language server
-Plug 'neoclide/coc.nvim', {
+Plug 'neoclide/coc.nvim', {                 
             \ 'tag': '*',
             \ 'do': { -> coc#util#install() }
-            \ }
+            \ }                             " language server & completion
 
 " source control
 Plug 'lambdalisue/gina.vim'                 " async git
