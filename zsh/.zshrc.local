@@ -29,3 +29,8 @@ setopt nocheckjobs
 
 ## alert me if something failed
 setopt printexitvalue
+
+## setup sdkman
+# SDKMAN
+export SDKMAN_DIR="/home/yiqiao/.sdkman"
+[[ -s "/home/yiqiao/.sdkman/bin/sdkman-init.sh" ]] && source "/home/yiqiao/.sdkman/bin/sdkman-init.sh"

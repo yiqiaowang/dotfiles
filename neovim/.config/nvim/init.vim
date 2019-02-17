@@ -60,12 +60,10 @@ Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh',
             \ }                             " language server
-Plug 'ncm2/ncm2'                            " autocomplete
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
+Plug 'neoclide/coc.nvim', {
+            \ 'tag': '*',
+            \ 'do': { -> coc#util#install() }
+            \ }
 
 " source control
 Plug 'lambdalisue/gina.vim'                 " async git
@@ -152,16 +150,8 @@ set incsearch
 " Indentline
 let g:indentLine_char = '▏'
 
-" ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-set pumheight=10
-
-inoremap <c-c> <ESC>
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-inoremap <expr> <Tab> (pumvisible() ? "\<C-n>" : "\<Tab>")
-inoremap <expr> <S-Tab> (pumvisible() ? "\<C-p>" : "\<S-Tab>")
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" coc.nvim
+"
 
 " ultisnips
 imap <c-u> <Plug>(ultisnips_expand)
