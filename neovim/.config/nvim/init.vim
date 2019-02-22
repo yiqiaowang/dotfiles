@@ -62,7 +62,6 @@ Plug 'neoclide/coc.nvim', {
             \ }                             " language server & completion
 
 " source control
-Plug 'lambdalisue/gina.vim'                 " async git
 Plug 'mhinz/vim-signify'                    " visualize vcs changes
 call plug#end()
 
