@@ -29,8 +29,10 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'mhinz/vim-startify'                   " nice startup page
 Plug 'RRethy/vim-illuminate'                " highlights word under cursor
 Plug 'Yggdroot/indentline'                  " highlight indent levels
-Plug 'yiqiaowang/inkpot'                    " theme
+Plug 'yiqiaowang/inkpot'                    " themes
+Plug 'robertmeta/nofrils'
 Plug 'yiqiaowang/statusline'                " statusline
+Plug 'TaDaa/vimade'                         " dim inactive splits
 
 " utilites
 Plug 'christoomey/vim-tmux-navigator'       " tmux
