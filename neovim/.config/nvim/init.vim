@@ -31,7 +31,7 @@ Plug 'RRethy/vim-illuminate'                " highlights word under cursor
 Plug 'Yggdroot/indentline'                  " highlight indent levels
 Plug 'yiqiaowang/inkpot'                    " themes
 Plug 'robertmeta/nofrils'
-Plug 'yiqiaowang/statusline'                " statusline
+Plug 'liuchengxu/eleline.vim'               " statusline
 Plug 'TaDaa/vimade'                         " dim inactive splits
 
 " utilites
@@ -65,6 +65,7 @@ Plug 'neoclide/coc.nvim', {
 
 " source control
 Plug 'mhinz/vim-signify'                    " visualize vcs changes
+Plug 'lambdalisue/gina.vim'                 " async git
 call plug#end()
 
 " ------------------------------------------------------------------------------ Key bindings
@@ -112,7 +113,10 @@ set scrolloff=1
 
 " Theme
 set termguicolors
-colorscheme inkpot
+colorscheme nofrils-acme
+let g:nofrils_heavylinenumbers=0
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=0 
 
 " Allow multiple unsaved buffers
 set hidden
