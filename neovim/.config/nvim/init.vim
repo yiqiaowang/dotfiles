@@ -158,8 +158,9 @@ let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-" eleline
+" statusline
 let g:eleline_powerline_fonts = 1 
+let g:statusline_yiqiao = 1
 
 " signify
 let g:signify_vcs_list = ['git']
@@ -169,40 +170,6 @@ let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-
-" language client neovim
-let g:LanguageClient_serverCommands = {
-            \ 'elixir': ['language_server.sh'],
-            \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-
-
-let g:LanguageClient_diagnosticsDisplay = {
-            \ 1: {
-            \  "name": "Error",
-            \ "texthl": "ALEError",
-            \ "signText": "!!",
-            \ "signTexthl": "ALEErrorSign",
-            \ },
-            \ 2: {
-            \ "name": "Warning",
-            \ "texthl": "ALEWarning",
-            \ "signText": "**",
-            \ "signTexthl": "ALEWarningSign",
-            \ },
-            \ 3: {
-            \ "name": "Information",
-            \ "texthl": "ALEInfo",
-            \ "signText": "--",
-            \ "signTexthl": "ALEInfoSign",
-            \ },
-            \ 4: {
-            \ "name": "Hint",
-            \ "texthl": "ALEInfo",
-            \ "signText": ">>",
-            \ "signTexthl": "ALEInfoSign",
-            \ }}
 
 " fzf.vim
 let g:fzf_colors = {
