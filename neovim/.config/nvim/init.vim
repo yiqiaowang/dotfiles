@@ -30,7 +30,7 @@ Plug 'mhinz/vim-startify'                   " nice startup page
 Plug 'RRethy/vim-illuminate'                " highlights word under cursor
 Plug 'Yggdroot/indentline'                  " highlight indent levels
 Plug 'yiqiaowang/inkpot'                    " themes
-Plug 'cocopon/iceberg.vim'
+Plug 'ajh17/Spacegray.vim'
 Plug 'yiqiaowang/statusline'                " statusline
 Plug 'TaDaa/vimade'                         " dim inactive splits
 
@@ -113,7 +113,8 @@ set scrolloff=1
 
 " Theme
 set termguicolors
-colorscheme iceberg
+set background=dark
+colorscheme spacegray
 
 " Allow multiple unsaved buffers
 set hidden
