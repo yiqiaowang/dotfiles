@@ -96,6 +96,9 @@ nnoremap <silent> <F9> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
 " Configuration
 " ------------------------------------------------------------------------------
 
+" Set pythonx version
+set pyxversion=3
+
 " Syntax Highlighting
 syntax on
 
