@@ -158,8 +158,8 @@ let g:indentLine_char = '▏'
 " ultisnips
 imap <c-u> <Plug>(ultisnips_expand)
 let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsJumpForwardTrigger	= "<tab>"
+let g:UltiSnipsJumpBackwardTrigger	= "<s-tab>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " statusline
