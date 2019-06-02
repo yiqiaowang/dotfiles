@@ -71,8 +71,11 @@ call plug#end()
 " ------------------------------------------------------------------------------ Key bindings
 " ------------------------------------------------------------------------------
 
-" Automatically refresh signify on buffer enter
-autocmd bufenter * :SignifyRefresh
+augroup signify_group
+    autocmd!
+    " Automatically refresh signify on buffer enter
+    autocmd bufenter * :SignifyRefresh
+augroup END
 
 " Leader mappings
 let mapleader="\<space>"
