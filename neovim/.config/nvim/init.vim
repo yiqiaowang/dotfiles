@@ -71,6 +71,9 @@ call plug#end()
 " ------------------------------------------------------------------------------ Key bindings
 " ------------------------------------------------------------------------------
 
+" Automatically refresh signify on buffer enter
+autocmd bufenter * :SignifyRefresh
+
 " Leader mappings
 let mapleader="\<space>"
 nnoremap <leader>b :Buffers<cr>
@@ -80,7 +83,7 @@ nnoremap <leader>g :GFiles<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :Snippets<cr>
-nnoremap <silent> <leader>w :wa<cr>:SignifyRefresh<cr>
+nnoremap <silent> <leader>w :wa<cr>
 nnoremap <silent> <leader>c :noh<cr>
 nnoremap <bs> <c-^>
 nnoremap <leader>= mfggVG=`fzz
