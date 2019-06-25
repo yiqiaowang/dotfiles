@@ -31,6 +31,7 @@ Plug 'RRethy/vim-illuminate'                " highlights word under cursor
 Plug 'Yggdroot/indentline'                  " highlight indent levels
 Plug 'yiqiaowang/inkpot'                    " themes
 Plug 'ajh17/Spacegray.vim'
+Plug 'liuchengxu/space-vim-theme'
 Plug 'yiqiaowang/statusline'                " statusline
 Plug 'TaDaa/vimade'                         " dim inactive splits
 
@@ -123,7 +124,7 @@ set scrolloff=1
 " Theme
 set termguicolors
 set background=dark
-colorscheme spacegray
+colorscheme space_vim_theme
 
 " Allow multiple unsaved buffers
 set hidden
