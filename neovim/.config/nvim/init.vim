@@ -47,16 +47,13 @@ Plug 'junegunn/fzf.vim'                     " fzf integration
 Plug 'junegunn/vim-easy-align'              " align stuff
 Plug 'justinmk/vim-dirvish'                 " netrw replacement
 Plug 'tpope/vim-commentary'                 " comment helper
-Plug 'tpope/vim-eunuch'                     " unix commands helper
 Plug 'tpope/vim-repeat'                     " repeat plugin maps
 Plug 'tpope/vim-surround'                   " quoting/paren etc. helper
 Plug 'tpope/vim-unimpaired'                 " bracket mappings
 Plug 'simeji/winresizer'                    " resize windows
 
 " language support
-Plug 'honza/vim-snippets'                   " snippet sources
 Plug 'sheerun/vim-polyglot'                 " language pack
-Plug 'SirVer/ultisnips'                     " snippet engine
 Plug 'neoclide/coc.nvim', {                 
             \ 'tag': '*',
             \ 'do': { -> coc#util#install() }
@@ -158,14 +155,6 @@ set incsearch
 let g:indentLine_char = '▏'
 
 " coc.nvim
-"
-
-" ultisnips
-imap <c-u> <Plug>(ultisnips_expand)
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<tab>"
-let g:UltiSnipsJumpBackwardTrigger	= "<s-tab>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " statusline
 let g:eleline_powerline_fonts = 1 
