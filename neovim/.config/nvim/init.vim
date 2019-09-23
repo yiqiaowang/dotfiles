@@ -28,6 +28,7 @@ Plug 'mhinz/vim-startify'                   " nice startup page
 Plug 'RRethy/vim-illuminate'                " highlights word under cursor
 Plug 'Yggdroot/indentline'                  " highlight indent levels
 Plug 'romainl/Apprentice'
+Plug 'yiqiaowang/vim-yami'
 Plug 'yiqiaowang/statusline'                " statusline
 Plug 'TaDaa/vimade'                         " dim inactive splits
 
@@ -117,8 +118,7 @@ set scrolloff=1
 
 " Theme
 set termguicolors
-set background=dark
-colorscheme apprentice
+colorscheme yami
 
 " Allow multiple unsaved buffers
 set hidden
