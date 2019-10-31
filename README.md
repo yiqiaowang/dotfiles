@@ -10,7 +10,8 @@ echo UPDATESTARTUPTTY | gpg-connect-agent
 ```
 
 ## Roadmap
-Neovim config structute
+### Neovim
+Neovim config structure __DONE__
 
 Python, C++, general setup
 
@@ -25,4 +26,8 @@ SEARCH
 https://github.com/liuchengxu/vim-clap vs vim-fzf
 
 Look @ Spacevim
+
+
+### Zsh
+ZSH config
 
