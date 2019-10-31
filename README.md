@@ -30,4 +30,7 @@ Look @ Spacevim
 
 ### Zsh
 ZSH config
+https://github.com/nojhan/liquidprompt
+https://github.com/alebcay/awesome-shell/blob/master/README.md
+https://github.com/unixorn/awesome-zsh-plugins
 
