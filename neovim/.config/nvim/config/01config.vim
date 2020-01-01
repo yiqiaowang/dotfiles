@@ -2,12 +2,6 @@
 " General Key Mappings
 " ------------------------------------------------------------------------------
 
-augroup signify_group
-    autocmd!
-    " Automatically refresh signify on buffer enter
-    autocmd bufenter * :SignifyRefresh
-augroup END
-
 " Leader mappings
 let mapleader="\<space>"
 nnoremap <leader>b :Buffers<cr>

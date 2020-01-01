@@ -38,7 +38,7 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 
 " vim-clap

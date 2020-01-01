@@ -20,7 +20,6 @@ Plug 'junegunn/fzf', {
             \    --update-rc'
             \  }                            " fuzzyfinder
 Plug 'junegunn/fzf.vim'                     " fzf integration
-Plug 'junegunn/vim-easy-align'              " align stuff
 Plug 'justinmk/vim-dirvish'                 " netrw replacement
 Plug 'tpope/vim-commentary'                 " comment helper
 Plug 'tpope/vim-repeat'                     " repeat plugin maps
@@ -37,6 +36,4 @@ Plug 'neoclide/coc.nvim', {
             \ }                             " language server & completion
 
 " source control
-Plug 'mhinz/vim-signify'                    " visualize vcs changes
-Plug 'lambdalisue/gina.vim'                 " async git
 call plug#end()
