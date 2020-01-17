@@ -27,7 +27,7 @@ nnoremap <silent> <F9> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
 " ------------------------------------------------------------------------------
 
 " Set pythonx version
-set pyxversion=3
+" set pyxversion=3
 
 " Syntax Highlighting
 syntax on

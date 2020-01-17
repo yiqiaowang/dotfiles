@@ -30,8 +30,19 @@ setopt nocheckjobs
 ## alert me if something failed
 setopt printexitvalue
 
-## setup sdkman
-# SDKMAN
-export SDKMAN_DIR="/home/yiqiao/.sdkman"
-[[ -s "/home/yiqiao/.sdkman/bin/sdkman-init.sh" ]] && source "/home/yiqiao/.sdkman/bin/sdkman-init.sh"
-export HEX_UNSAFE_HTTPS=1
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+# Plugins
+[ -f ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh
+
+# Fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# vcpkg
+[ -d ~/.vcpkg ] && PATH=$PATH:~/.vcpkg
+
+# local bin
+[ -d ~/.local/bin ] && PATH=$PATH:~/.local/bin
+
+# Export path
+export PATH
