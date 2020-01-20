@@ -14,7 +14,7 @@ Plug 'christoomey/vim-tmux-navigator'       " tmux
 Plug 'junegunn/fzf', {
             \  'dir': '~/.fzf',
             \  'do': './install
-            \    --no-fish --no-zsh
+            \    --no-fish --no-bash
             \    --64 --key-bindings
             \    --completion
             \    --update-rc'
