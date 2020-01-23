@@ -32,6 +32,13 @@ setopt printexitvalue
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+
+# Autocomplete for kubectl
+source <(kubectl completion zsh)
+
+# Autocomplete for helm
+source <(helm completion zsh)
+
 # Plugins
 [ -f ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.zsh-plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
