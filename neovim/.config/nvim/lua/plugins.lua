@@ -36,4 +36,13 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',          -- syntax highlighting
     run = [[:TSUpdate]]
   }
+  use {
+    'puremourning/vimspector',
+    requires = {
+        {'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope.nvim'},
+        {'nvim-telescope/telescope-vimspector.nvim'}
+    }
+  }
 end)

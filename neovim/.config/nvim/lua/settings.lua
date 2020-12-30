@@ -104,7 +104,12 @@ local function configure_treesitter()
     }
 end
 
+local function configure_telescope()
+    -- require'telescope'.extensions.vimspector.configurations()
+end
+
 core_options()
 create_commands()
 configure_lsp()
 configure_treesitter()
+configure_telescope()
