@@ -1,50 +1,19 @@
 " Automatically generated packer.nvim plugin loader code
 
-if !has('nvim')
+if !has('nvim-0.5')
+  echohl WarningMsg
+  echom "Invalid Neovim version for packer.nvim!"
+  echohl None
   finish
 endif
 
 lua << END
 local plugins = {
-  ["completion-nvim"] = {
-    after = { "nvim-lspconfig", "vim-vsnip", "vim-vsnip-integ" },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/Users/stevenwang/.local/share/nvim/site/pack/packer/opt/completion-nvim"
-  },
-  ["nvim-lspconfig"] = {
-    load_after = {
-      ["completion-nvim"] = true
-    },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/Users/stevenwang/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
-  },
   ["packer.nvim"] = {
     loaded = false,
     only_sequence = false,
     only_setup = false,
     path = "/Users/stevenwang/.local/share/nvim/site/pack/packer/opt/packer.nvim"
-  },
-  ["vim-vsnip"] = {
-    load_after = {
-      ["completion-nvim"] = true
-    },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/Users/stevenwang/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
-  },
-  ["vim-vsnip-integ"] = {
-    load_after = {
-      ["completion-nvim"] = true
-    },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/Users/stevenwang/.local/share/nvim/site/pack/packer/opt/vim-vsnip-integ"
   }
 }
 
@@ -109,7 +78,6 @@ _packer_load = function(names, cause)
   for _, name in ipairs(names) do
     if not plugins[name].loaded then
       vim.cmd('packadd ' .. name)
-      vim._update_package_paths()
       if plugins[name].config then
         for _i, config_line in ipairs(plugins[name].config) do
           loadstring(config_line)()
@@ -172,7 +140,6 @@ end
 -- Post-load configuration
 -- Conditional loads
 -- Load plugins in order defined by `after`
-vim._update_package_paths()
 END
 
 function! s:load(names, cause) abort

@@ -1,5 +1,4 @@
 require('nvim_utils')
-require('mappings')
 
 local function core_options()
   local options = {
@@ -31,6 +30,7 @@ local function core_options()
     shortmess       = vim.o.shortmess .. "cs"; 
     rtp             = vim.o.rtp .. "/usr/local/opt/fzf";
     clipboard       = "unnamedplus";
+    completeopt     = "menuone,noinsert,noselect";
     
 
     -- UI OPTS
@@ -49,20 +49,62 @@ local function core_options()
   set_options(options)
 
   -- Globals
-  vim.g.python3_host_prog = '/usr/local/bin/python3'
+  vim.g.python3_host_prog = '/usr/local/opt/python@3.8/bin/python3'
 
   local autocmds = {
-    load_core = {};
-    ft = {};
-    windows = {};
-    bufs = {};
-    ft_detect = {};
+    all_bufs = {
+        {"BufEnter", "*", "lua require'completion'.on_attach()"};
+    };
   }
   nvim_create_augroups(autocmds)
 end
 
 local function create_commands()
+    -- Make Y more consistent
+    vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true})
+
+    -- telescope.nvim
+    vim.api.nvim_set_keymap('n', '<leader>fb', [[:lua require('telescope.builtin').buffers()<cr>]], {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>fg', [[:lua require('telescope.builtin').live_grep()<cr>]], {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>ff', [[:lua require('telescope.builtin').find_files()<cr>]], {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>fh', [[:lua require('telescope.builtin').oldfiles()<cr>]], {noremap = true})
+
+    vim.api.nvim_set_keymap('n', '<bs>', '<c-^>', {noremap = true})
+
+    -- completion-nvim
+    vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], {noremap = true, expr = true})
+    vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], {noremap = true, expr = true})
+
+    -- vim-vsnip
+    vim.api.nvim_set_keymap('i', '<C-j>', [[vsnip#available(1) ? "<Plug>(vsnip-expand-or-jump)" : "<C-j>"]], {expr = true})
+    vim.api.nvim_set_keymap('i', '<C-k>', [[vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)"      : "<C-k>"]], {expr = true})
+end
+
+local function configure_lsp()
+    local lspconfig = require'lspconfig'
+    lspconfig.clangd.setup{}
+end
+
+
+local function configure_lsp()
+    local lspconfig = require'lspconfig'
+    lspconfig.clangd.setup{}
+    lspconfig.pyls.setup{}
+end
+
+
+local function configure_treesitter()
+    require'nvim-treesitter.configs'.setup {
+        highlight = {
+            enable = true
+        },
+        indent = {
+            enable = true
+        }
+    }
 end
 
 core_options()
 create_commands()
+configure_lsp()
+configure_treesitter()
