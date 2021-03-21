@@ -1,0 +1,6 @@
+require('configuration.general')
+require('configuration.reloads')
+require('configuration.commands')
+require('configuration.functions')
+require('configuration.keybinds')
+require('configuration.options')
