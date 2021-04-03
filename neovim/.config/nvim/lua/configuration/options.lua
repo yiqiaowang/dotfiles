@@ -125,7 +125,6 @@ Option.w({
 	-- and scroll the buffer
 	scrolloff = 8,
 	wrap = false,
-	colorcolumn = "80",
 })
 
 Option.b({

@@ -15,7 +15,7 @@ end
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}    -- plugin manager
 
   -- Plugins --
@@ -49,13 +49,23 @@ return require('packer').startup(function()
         {'nvim-telescope/telescope-vimspector.nvim'}
     }
   }
+  use 'b3nj5m1n/kommentary'
+  use 'TimUntersberger/neogit'
+  use {
+	  'kyazdani42/nvim-tree.lua',
+	  requires = {
+		  'kyazdani42/nvim-web-devicons'
+	  }
+  }
 end)
 
 
 
---- Plugin configurations
-require(plugins.telescope)
-require(plugins.completion_nvim)
-require(plugins.lspconfig)
-require(plugins.treesitter)
-require(plugins.vimspector)
+-- --- Plugin configurations
+-- require('plugins.telescope')
+-- require('plugins.completion_nvim')
+-- require('plugins.lspconfig')
+-- require('plugins.treesitter')
+-- require('plugins.vimspector')
+-- require('plugins.nvim-tree')
+-- require('plugins.neogit')

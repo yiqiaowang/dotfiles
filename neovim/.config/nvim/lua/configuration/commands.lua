@@ -11,9 +11,4 @@ Augroup.cmds({
     MTHNGLAC = {
         {"BufWritePre", "* :call TrimWhitespace()"};
     };
-    -- completion nvim
-    completion_nvim = {
-        {"BufEnter", "*", "lua require'completion'.on_attach()"};
-    };
-
 })
