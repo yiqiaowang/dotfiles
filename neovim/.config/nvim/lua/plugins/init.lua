@@ -31,9 +31,11 @@ require('packer').startup(function()
   }
   use 'sheerun/vim-polyglot'                    -- language multipack
   use {                                         -- completion
-    'nvim-lua/completion-nvim',
+    'hrsh7th/nvim-compe',
     requires = {
-        {'neovim/nvim-lspconfig'}
+        {'neovim/nvim-lspconfig'},
+        {'hrsh7th/vim-vsnip'},
+        {'hrsh7th/vim-vsnip-integ'}
     }
   }
   use {
@@ -52,6 +54,15 @@ require('packer').startup(function()
   use 'b3nj5m1n/kommentary'
   use 'TimUntersberger/neogit'
   use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+  use {
 	  'kyazdani42/nvim-tree.lua',
 	  requires = {
 		  'kyazdani42/nvim-web-devicons'
@@ -61,11 +72,12 @@ end)
 
 
 
--- --- Plugin configurations
--- require('plugins.telescope')
--- require('plugins.completion_nvim')
--- require('plugins.lspconfig')
--- require('plugins.treesitter')
--- require('plugins.vimspector')
--- require('plugins.nvim-tree')
--- require('plugins.neogit')
+--- Plugin configurations
+require('plugins.telescope')
+require('plugins.nvim-compe')
+require('plugins.lspconfig')
+require('plugins.treesitter')
+require('plugins.vimspector')
+require('plugins.nvim-tree')
+require('plugins.neogit')
+require('plugins.nvim-tree')

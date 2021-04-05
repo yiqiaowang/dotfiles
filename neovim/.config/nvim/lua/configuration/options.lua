@@ -53,7 +53,7 @@ Option.g({
     -- open completion menu even for single item
 	-- do not auto insert items from completion menu
 	-- @warning - preview is removed. when it's on, default lsp opens a vertical tab
-	completeopt = 'menuone,noinsert,noselect',
+	completeopt = 'menuone,noselect',
 
 
 	--[[
